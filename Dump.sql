@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `bookdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `bookdb`;
 -- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bookdb
@@ -14,6 +16,32 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `book`
+--
+
+DROP TABLE IF EXISTS `book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `book` (
+  `BookID` int(11) NOT NULL AUTO_INCREMENT,
+  `BookName` varchar(45) DEFAULT NULL,
+  `Author` varchar(45) DEFAULT NULL,
+  `Description` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`BookID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book`
+--
+
+LOCK TABLES `book` WRITE;
+/*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES (11,'KR Book','KR Author','Descr.'),(17,'fgd','dfg','dgdf'),(18,'System.Drawing.Bitmap','11','KR Book');
+/*!40000 ALTER TABLE `book` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'bookdb'
@@ -150,4 +178,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-17 16:09:27
+-- Dump completed on 2019-12-18 16:36:00

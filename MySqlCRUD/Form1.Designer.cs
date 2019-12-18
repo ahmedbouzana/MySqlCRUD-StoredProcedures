@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBookName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -44,13 +39,12 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            //this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            //this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.update = new System.Windows.Forms.DataGridViewImageColumn();
-            //this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBook)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,50 +86,21 @@
             // 
             this.dgvBook.AllowUserToAddRows = false;
             this.dgvBook.AllowUserToDeleteRows = false;
+            this.dgvBook.AllowUserToOrderColumns = true;
             this.dgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
             this.dgvBook.Location = new System.Drawing.Point(421, 64);
             this.dgvBook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvBook.Name = "dgvBook";
             this.dgvBook.ReadOnly = true;
             this.dgvBook.Size = new System.Drawing.Size(612, 230);
             this.dgvBook.TabIndex = 7;
-
-
-            // 
-            // dgvBook
-            // 
-            //this.dgvBook.AllowUserToAddRows = false;
-            //this.dgvBook.AutoGenerateColumns = false;
-            //this.dgvBook.BackgroundColor = System.Drawing.Color.White;
-            //this.dgvBook.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            //dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            //dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            //dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            //dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            //dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            //dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.dgvBook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            //this.dgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            //this.dgvBook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            //this.dataGridViewTextBoxColumn1,
-            //this.dataGridViewTextBoxColumn2,
-            //this.dataGridViewTextBoxColumn3,
-            //this.dataGridViewTextBoxColumn4,
-            //this.update,
-            //this.remove});
-            //this.dgvBook.ReadOnly = true;
-            //this.dgvBook.EnableHeadersVisualStyles = false;
-            //this.dgvBook.GridColor = System.Drawing.Color.Gray;
-            //this.dgvBook.Location = new System.Drawing.Point(421, 64);
-            //this.dgvBook.MultiSelect = false;
-            //this.dgvBook.Name = "dgvBook";
-            //this.dgvBook.RowHeadersVisible = false;
-            //this.dgvBook.RowTemplate.Height = 35;
-            //this.dgvBook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            //this.dgvBook.Size = new System.Drawing.Size(612, 230);
-            //this.dgvBook.TabIndex = 7;
-
             // 
             // label2
             // 
@@ -212,6 +177,51 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Search :";
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "BookID";
+            this.Column1.HeaderText = "BookID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BookName";
+            this.Column2.HeaderText = "BookName";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Author";
+            this.Column3.HeaderText = "Author";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Description";
+            this.Column4.HeaderText = "Description";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "";
+            this.Column5.Image = global::MySqlCRUD.Properties.Resources.iconUpdate;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "";
+            this.Column6.Image = global::MySqlCRUD.Properties.Resources.iconDelete;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -252,6 +262,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvBook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewImageColumn Column5;
+        private System.Windows.Forms.DataGridViewImageColumn Column6;
         //private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
