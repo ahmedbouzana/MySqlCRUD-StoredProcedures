@@ -24,6 +24,16 @@ namespace MySqlCRUD
             dgvBook.RowHeadersVisible = false;
             dgvBook.Columns[0].Visible = false;
 
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic.Add("1", "Big");
+            dic.Add("2", "Small");
+            comboBox1.DataSource = new BindingSource(dic, null);
+            comboBox1.DisplayMember = "Value";
+            comboBox1.ValueMember = "Key";
+            comboBox1.SelectedIndex = -1;
+
+            //string value = ((KeyValuePair<string, string>)comboBox1.SelectedItem).Value;
+
             dgvBook.CellClick += dataGridViewSoftware_CellClick;
             txtSearch.TextChanged += txtSearchSoftware_TextChanged;
         }
@@ -82,16 +92,17 @@ namespace MySqlCRUD
         {
             try
             {
+                int cell = 2;
                 //update
+                //dgvBook.Columns["update"].Index                    
                 if (e.ColumnIndex == 0)
                 {
-                    //dgvBook.Columns["update"].Index
                     if (dgvBook.CurrentRow.Index != -1)
                     {
-                        txtBookName.Text = dgvBook.CurrentRow.Cells[1].Value.ToString();
-                        txtAuthor.Text = dgvBook.CurrentRow.Cells[2].Value.ToString();
-                        txtDescripiton.Text = dgvBook.CurrentRow.Cells[3].Value.ToString();
-                        bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[0].Value.ToString());
+                        txtBookName.Text = dgvBook.CurrentRow.Cells[cell+1].Value.ToString();
+                        txtAuthor.Text = dgvBook.CurrentRow.Cells[cell+2].Value.ToString();
+                        txtDescripiton.Text = dgvBook.CurrentRow.Cells[cell+3].Value.ToString();
+                        bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell+0].Value.ToString());
                         btnSave.Text = "Update";
                     }
                 }
@@ -100,7 +111,7 @@ namespace MySqlCRUD
                 {
                     using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
                     {
-                        bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[0].Value.ToString());
+                        bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell+0].Value.ToString());
 
                         mysqlCon.Open();
                         MySqlCommand mySqlCmd = new MySqlCommand("BookDeleteByID", mysqlCon);
