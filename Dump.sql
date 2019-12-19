@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `bookdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `bookdb`;
 -- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bookdb
@@ -28,9 +26,12 @@ CREATE TABLE `book` (
   `BookID` int(11) NOT NULL AUTO_INCREMENT,
   `BookName` varchar(45) DEFAULT NULL,
   `Author` varchar(45) DEFAULT NULL,
+  `DateBook` datetime DEFAULT NULL,
+  `TypeBook` int(11) DEFAULT '-1',
+  `Free` tinyint(4) DEFAULT '0',
   `Description` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`BookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,9 +40,13 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (11,'KR Book','KR Author','Descr.'),(17,'fgd','dfg','dgdf'),(18,'System.Drawing.Bitmap','11','KR Book');
+INSERT INTO `book` VALUES (11,'KR Book','KR Author','2019-12-19 21:07:53',1,1,'Descr. 1'),(19,'Game of thrones','James Morgan','2009-01-12 21:22:47',1,0,'S.F.');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'bookdb'
+--
 
 --
 -- Dumping routines for database 'bookdb'
@@ -59,18 +64,24 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `BookAddOrEdit`(
 _BookID INT,
 _BookName Varchar(45),
-_Author varchar(45),
+_Author varchar(45),
+_DateBook datetime,
+_TypeBook INT,
+_Free boolean,
 _Description varchar(250)
 )
 BEGIN
 	IF _BookID = 0 THEN
-		INSERT INTO Book (BookName,Author,Description)
-        VALUES (_BookName,_Author,_Description);
+		INSERT INTO Book (BookName,Author,DateBook,TypeBook,Free,Description)
+        VALUES (_BookName,_Author,_DateBook,_TypeBook,_Free,_Description);
 	else
 		UPDATE Book
         SET
 			BookName = _BookName,
-            Author = _Author,
+            Author = _Author,
+            DateBook = _DateBook,
+            TypeBook = _TypeBook,
+            Free = _Free,
             Description = _Description
 		WHERE BookID = _BookID;
 	END IF;
@@ -178,4 +189,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-18 16:36:00
+-- Dump completed on 2019-12-19 21:27:41

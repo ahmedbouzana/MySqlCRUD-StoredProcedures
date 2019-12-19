@@ -30,20 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtBookName = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
             this.dgvBook = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtAuthor = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDescripiton = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateBook = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +41,18 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDescripiton = new System.Windows.Forms.TextBox();
+            this.btCancel = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.dateBook = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btSearsh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBook)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,19 +76,19 @@
             this.txtBookName.Size = new System.Drawing.Size(217, 29);
             this.txtBookName.TabIndex = 1;
             // 
-            // btnSave
+            // btSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(181)))));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(113, 378);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(131, 37);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(181)))));
+            this.btSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSave.ForeColor = System.Drawing.Color.White;
+            this.btSave.Location = new System.Drawing.Point(113, 378);
+            this.btSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(131, 37);
+            this.btSave.TabIndex = 4;
+            this.btSave.Text = "Save";
+            this.btSave.UseVisualStyleBackColor = false;
+            this.btSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dgvBook
             // 
@@ -112,132 +112,6 @@
             this.dgvBook.Size = new System.Drawing.Size(756, 351);
             this.dgvBook.TabIndex = 7;
             this.dgvBook.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBook_CellFormatting);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 108);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 21);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Author :";
-            // 
-            // txtAuthor
-            // 
-            this.txtAuthor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAuthor.Location = new System.Drawing.Point(113, 105);
-            this.txtAuthor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtAuthor.Name = "txtAuthor";
-            this.txtAuthor.Size = new System.Drawing.Size(217, 29);
-            this.txtAuthor.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 270);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 21);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Descripiton :";
-            // 
-            // txtDescripiton
-            // 
-            this.txtDescripiton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripiton.Location = new System.Drawing.Point(113, 267);
-            this.txtDescripiton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDescripiton.Multiline = true;
-            this.txtDescripiton.Name = "txtDescripiton";
-            this.txtDescripiton.Size = new System.Drawing.Size(217, 67);
-            this.txtDescripiton.TabIndex = 3;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.White;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(252, 378);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(78, 37);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(415, 25);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(684, 29);
-            this.txtSearch.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(343, 28);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 21);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Search :";
-            // 
-            // dateBook
-            // 
-            this.dateBook.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateBook.Location = new System.Drawing.Point(113, 145);
-            this.dateBook.Name = "dateBook";
-            this.dateBook.Size = new System.Drawing.Size(217, 29);
-            this.dateBook.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(56, 149);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 21);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Date :";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(113, 229);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(59, 25);
-            this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "Free";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormatString = "dd/MM/yyyy";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(113, 186);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(217, 29);
-            this.comboBox1.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(56, 189);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 21);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Type :";
             // 
             // Column1
             // 
@@ -307,6 +181,136 @@
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column6.Width = 50;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(40, 108);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 21);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Author :";
+            // 
+            // txtAuthor
+            // 
+            this.txtAuthor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAuthor.Location = new System.Drawing.Point(113, 105);
+            this.txtAuthor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(217, 29);
+            this.txtAuthor.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 270);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 21);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Descripiton :";
+            // 
+            // txtDescripiton
+            // 
+            this.txtDescripiton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripiton.Location = new System.Drawing.Point(113, 267);
+            this.txtDescripiton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDescripiton.Multiline = true;
+            this.txtDescripiton.Name = "txtDescripiton";
+            this.txtDescripiton.Size = new System.Drawing.Size(217, 67);
+            this.txtDescripiton.TabIndex = 3;
+            // 
+            // btCancel
+            // 
+            this.btCancel.BackColor = System.Drawing.Color.White;
+            this.btCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCancel.ForeColor = System.Drawing.Color.Black;
+            this.btCancel.Location = new System.Drawing.Point(252, 378);
+            this.btCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btCancel.Name = "btCancel";
+            this.btCancel.Size = new System.Drawing.Size(78, 37);
+            this.btCancel.TabIndex = 5;
+            this.btCancel.Text = "Cancel";
+            this.btCancel.UseVisualStyleBackColor = false;
+            this.btCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(343, 25);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(671, 29);
+            this.tbSearch.TabIndex = 6;
+            this.tbSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
+            // 
+            // dateBook
+            // 
+            this.dateBook.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateBook.Location = new System.Drawing.Point(113, 145);
+            this.dateBook.Name = "dateBook";
+            this.dateBook.Size = new System.Drawing.Size(217, 29);
+            this.dateBook.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(56, 149);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 21);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Date :";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(113, 229);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(59, 25);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.Text = "Free";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.FormatString = "dd/MM/yyyy";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(113, 186);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(217, 29);
+            this.comboBox1.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(56, 189);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 21);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Type :";
+            // 
+            // btSearsh
+            // 
+            this.btSearsh.BackColor = System.Drawing.Color.Yellow;
+            this.btSearsh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSearsh.ForeColor = System.Drawing.Color.Black;
+            this.btSearsh.Location = new System.Drawing.Point(1022, 25);
+            this.btSearsh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btSearsh.Name = "btSearsh";
+            this.btSearsh.Size = new System.Drawing.Size(77, 29);
+            this.btSearsh.TabIndex = 5;
+            this.btSearsh.Text = "Searsh";
+            this.btSearsh.UseVisualStyleBackColor = false;
+            this.btSearsh.Click += new System.EventHandler(this.btSearsh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -318,14 +322,14 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateBook);
             this.Controls.Add(this.dgvBook);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btSearsh);
+            this.Controls.Add(this.btCancel);
+            this.Controls.Add(this.btSave);
             this.Controls.Add(this.txtDescripiton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtAuthor);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.txtBookName);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -347,10 +351,9 @@
         private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDescripiton;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.DataGridView dgvBook;
         private System.Windows.Forms.DateTimePicker dateBook;
         private System.Windows.Forms.Label label5;
@@ -366,6 +369,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewImageColumn Column5;
         private System.Windows.Forms.DataGridViewImageColumn Column6;
+        private System.Windows.Forms.Button btSearsh;
         //private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;

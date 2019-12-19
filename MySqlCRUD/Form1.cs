@@ -37,7 +37,6 @@ namespace MySqlCRUD
             comboBox1.SelectedIndex = -1;
 
             dgvBook.CellClick += dataGridViewSoftware_CellClick;
-            txtSearch.TextChanged += txtSearchSoftware_TextChanged;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -83,9 +82,9 @@ namespace MySqlCRUD
 
         void Clear()
         {
-            txtBookName.Text = txtAuthor.Text = txtDescripiton.Text = txtSearch.Text = "";
+            txtBookName.Text = txtAuthor.Text = txtDescripiton.Text = tbSearch.Text = "";
             bookID = 0;
-            btnSave.Text = "Save";
+            btSave.Text = "Save";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -111,7 +110,7 @@ namespace MySqlCRUD
                         checkBox1.Checked = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell + 5].Value) == 1 ? true : false;
                         txtDescripiton.Text = dgvBook.CurrentRow.Cells[cell + 6].Value.ToString();
                         bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell + 0].Value.ToString());
-                        btnSave.Text = "Update";
+                        btSave.Text = "Update";
                     }
                 }
                 //delete
@@ -143,14 +142,27 @@ namespace MySqlCRUD
             }
         }
 
-        private void txtSearchSoftware_TextChanged(object sender, EventArgs e)
+        private void btSearsh_Click(object sender, EventArgs e)
+        {
+            SearshFilter();
+        }
+
+        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+                SearshFilter();
+            //else if(string.IsNullOrWhiteSpace(tbSearch.Text))
+            //    GridFill();
+        }
+
+        private void SearshFilter()
         {
             using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
             {
                 mysqlCon.Open();
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter("BookSearchByValue", mysqlCon);
                 sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
-                sqlDa.SelectCommand.Parameters.AddWithValue("_SearchValue", txtSearch.Text);
+                sqlDa.SelectCommand.Parameters.AddWithValue("_SearchValue", tbSearch.Text);
                 DataTable dtblBook = new DataTable();
                 sqlDa.Fill(dtblBook);
                 dgvBook.DataSource = dtblBook;
@@ -182,7 +194,7 @@ namespace MySqlCRUD
 
                     case "Free":
 
-                        if (e.Value != null || Convert.ToInt32(e.Value) == 0)
+                        if (e.Value == null || Convert.ToInt32(e.Value) == 0)
                             e.Value = "Not free";
                         else if (e.Value != null && Convert.ToInt32(e.Value) == 1)
                             e.Value = "Free";
