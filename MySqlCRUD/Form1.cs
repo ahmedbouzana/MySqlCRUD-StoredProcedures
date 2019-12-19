@@ -16,23 +16,25 @@ namespace MySqlCRUD
     {
         string connectionString = @"Server=localhost;Database=bookdb;Uid=root;Pwd=00000000;";
         int bookID = 0;
+        Dictionary<int, string> dic;
+
         public Form1()
         {
             InitializeComponent();
-
+            dgvBook.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvBook.RowTemplate.Height = 30;
             dgvBook.RowHeadersVisible = false;
             dgvBook.Columns[0].Visible = false;
 
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            dic.Add("1", "Big");
-            dic.Add("2", "Small");
+            dic = new Dictionary<int, string>
+            {
+                { 1, "Big" },
+                { 2, "Small" }
+            };
             comboBox1.DataSource = new BindingSource(dic, null);
             comboBox1.DisplayMember = "Value";
             comboBox1.ValueMember = "Key";
             comboBox1.SelectedIndex = -1;
-
-            //string value = ((KeyValuePair<string, string>)comboBox1.SelectedItem).Value;
 
             dgvBook.CellClick += dataGridViewSoftware_CellClick;
             txtSearch.TextChanged += txtSearchSoftware_TextChanged;
@@ -68,6 +70,9 @@ namespace MySqlCRUD
                 mySqlCmd.Parameters.AddWithValue("_BookID", bookID);
                 mySqlCmd.Parameters.AddWithValue("_BookName", txtBookName.Text.Trim());
                 mySqlCmd.Parameters.AddWithValue("_Author", txtAuthor.Text.Trim());
+                mySqlCmd.Parameters.AddWithValue("_DateBook", dateBook.Value);
+                mySqlCmd.Parameters.AddWithValue("_TypeBook", comboBox1.SelectedValue);
+                mySqlCmd.Parameters.AddWithValue("_Free", checkBox1.Checked);
                 mySqlCmd.Parameters.AddWithValue("_Description", txtDescripiton.Text.Trim());
                 mySqlCmd.ExecuteNonQuery();
                 //MessageBox.Show("Submitted Successfully");
@@ -93,41 +98,48 @@ namespace MySqlCRUD
             try
             {
                 int cell = 2;
-                //update
-                //dgvBook.Columns["update"].Index                    
+
+                //update           
                 if (e.ColumnIndex == 0)
                 {
                     if (dgvBook.CurrentRow.Index != -1)
                     {
-                        txtBookName.Text = dgvBook.CurrentRow.Cells[cell+1].Value.ToString();
-                        txtAuthor.Text = dgvBook.CurrentRow.Cells[cell+2].Value.ToString();
-                        txtDescripiton.Text = dgvBook.CurrentRow.Cells[cell+3].Value.ToString();
-                        bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell+0].Value.ToString());
+                        txtBookName.Text = dgvBook.CurrentRow.Cells[cell + 1].Value.ToString();
+                        txtAuthor.Text = dgvBook.CurrentRow.Cells[cell + 2].Value.ToString();
+                        dateBook.Text = dgvBook.CurrentRow.Cells[cell + 3].Value.ToString();
+                        comboBox1.SelectedValue = dgvBook.CurrentRow.Cells[cell + 4].Value;
+                        checkBox1.Checked = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell + 5].Value) == 1 ? true : false;
+                        txtDescripiton.Text = dgvBook.CurrentRow.Cells[cell + 6].Value.ToString();
+                        bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell + 0].Value.ToString());
                         btnSave.Text = "Update";
                     }
                 }
                 //delete
                 else if (e.ColumnIndex == 1)
                 {
-                    using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                    DialogResult dialogResult = MessageBox.Show("Do you want to delete " + dgvBook.CurrentRow.Cells[cell + 1].Value + "book?", "Delete book", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell+0].Value.ToString());
+                        using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                        {
+                            bookID = Convert.ToInt32(dgvBook.CurrentRow.Cells[cell + 0].Value.ToString());
 
-                        mysqlCon.Open();
-                        MySqlCommand mySqlCmd = new MySqlCommand("BookDeleteByID", mysqlCon);
-                        mySqlCmd.CommandType = CommandType.StoredProcedure;
-                        mySqlCmd.Parameters.AddWithValue("_BookID", bookID);
-                        mySqlCmd.ExecuteNonQuery();
-                        //MessageBox.Show("Deleted Successfully");
+                            mysqlCon.Open();
+                            MySqlCommand mySqlCmd = new MySqlCommand("BookDeleteByID", mysqlCon);
+                            mySqlCmd.CommandType = CommandType.StoredProcedure;
+                            mySqlCmd.Parameters.AddWithValue("_BookID", bookID);
+                            mySqlCmd.ExecuteNonQuery();
+                            //MessageBox.Show("Deleted Successfully");
 
-                        Clear();
-                        GridFill();
+                            Clear();
+                            GridFill();
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -142,7 +154,48 @@ namespace MySqlCRUD
                 DataTable dtblBook = new DataTable();
                 sqlDa.Fill(dtblBook);
                 dgvBook.DataSource = dtblBook;
-                dgvBook.Columns[0].Visible = false;
+            }
+        }
+
+        private void dgvBook_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                string name = dgvBook.Columns[e.ColumnIndex].DataPropertyName;
+                switch (name)
+                {
+                    case "DateBook":
+                        if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateTime))
+                            e.Value = dateTime.ToShortDateString();
+                        else
+                            e.Value = "";
+
+                        break;
+
+                    case "TypeBook":
+                        if (e.Value != null && Convert.ToInt32(e.Value) > 0)
+                            e.Value = dic[Convert.ToInt32(e.Value)];
+                        else
+                            e.Value = "";
+
+                        break;
+
+                    case "Free":
+
+                        if (e.Value != null || Convert.ToInt32(e.Value) == 0)
+                            e.Value = "Not free";
+                        else if (e.Value != null && Convert.ToInt32(e.Value) == 1)
+                            e.Value = "Free";
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
             }
         }
     }
