@@ -46,17 +46,23 @@ namespace MySqlCRUD
             GridFill();
         }
 
-        void GridFill()
+        private async void GridFill()
         {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+            DataTable dtBook = null;
+            await Task.Run(() =>
             {
-                mysqlCon.Open();
-                MySqlDataAdapter sqlDa = new MySqlDataAdapter("BookViewAll", mysqlCon);
-                sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
-                DataTable dtblBook = new DataTable();
-                sqlDa.Fill(dtblBook);
-                dgvBook.DataSource = dtblBook;
-            }
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
+                    mysqlCon.Open();
+                    MySqlDataAdapter sqlDa = new MySqlDataAdapter("BookViewAll", mysqlCon);
+                    sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    dtBook = new DataTable();
+                    sqlDa.Fill(dtBook);
+                }
+            });
+
+            if(dtBook != null)
+                dgvBook.DataSource = dtBook;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -155,18 +161,24 @@ namespace MySqlCRUD
             //    GridFill();
         }
 
-        private void SearshFilter()
+        private async void SearshFilter()
         {
-            using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+            DataTable dtBook = null;
+            await Task.Run(() =>
             {
-                mysqlCon.Open();
-                MySqlDataAdapter sqlDa = new MySqlDataAdapter("BookSearchByValue", mysqlCon);
-                sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
-                sqlDa.SelectCommand.Parameters.AddWithValue("_SearchValue", tbSearch.Text);
-                DataTable dtblBook = new DataTable();
-                sqlDa.Fill(dtblBook);
-                dgvBook.DataSource = dtblBook;
-            }
+                using (MySqlConnection mysqlCon = new MySqlConnection(connectionString))
+                {
+                    mysqlCon.Open();
+                    MySqlDataAdapter sqlDa = new MySqlDataAdapter("BookSearchByValue", mysqlCon);
+                    sqlDa.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    sqlDa.SelectCommand.Parameters.AddWithValue("_SearchValue", tbSearch.Text);
+                    dtBook = new DataTable();
+                    sqlDa.Fill(dtBook);
+                }
+            });
+
+            if (dtBook != null)
+                dgvBook.DataSource = dtBook;
         }
 
         private void dgvBook_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
